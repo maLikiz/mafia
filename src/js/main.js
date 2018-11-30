@@ -293,7 +293,7 @@ $(function() {
 })(jQuery);
 
 
-function overflowHidden(isHidden, delay) {
+function overflowHidden(isHidden, delay, delay2) {
   var div = document.createElement('div');
   var html = document.documentElement;
   var {scrollY} = window;
@@ -314,7 +314,7 @@ function overflowHidden(isHidden, delay) {
     // set `html` position to look the same as before
     setTimeout(() => {
       $('html').css({
-        width: 'calc(100% - ' + scrollWidth + 'px)',
+        width: '100%',
         position: 'fixed',
         top: -scrollY,
         overflow: 'hidden',
@@ -331,7 +331,7 @@ function overflowHidden(isHidden, delay) {
 
       // reset position scroll
       window.scrollTo(0, -top);
-    }, delay);
+    }, delay2);
   }
 
 }
@@ -340,14 +340,14 @@ function hideSdebar() {
   $('body').removeClass('active-mobile');
   $('.mobile-sidebar').removeClass('active');
   $('.open-menu').removeClass('active');
-  overflowHidden(false, 300);
+  overflowHidden(false, 300, 0);
 }
 
 function showSdebar() {
   $('body').addClass('active-mobile');
   $('.mobile-sidebar').addClass('active');
   $('.open-menu').addClass('active');
-  overflowHidden(true, 300);
+  overflowHidden(true, 300, 300);
 
 
   $('.mobile-sidebar').css({
