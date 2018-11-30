@@ -290,6 +290,12 @@ $(function() {
 
     document.querySelector('html').style.touchAction = '';
   });
+
+  $(window).resize(function() {
+    if ($(window).width() >= 880) {
+      hideSdebar()
+    }
+  });
 })(jQuery);
 
 
