@@ -293,7 +293,7 @@ $(function() {
 
   $(window).resize(function() {
     if ($(window).width() >= 880) {
-      hideSdebar()
+      hideSdebar();
     }
   });
 })(jQuery);
@@ -318,9 +318,9 @@ function overflowHidden(isHidden, delay, delay2) {
 
   if (isHidden) {
     // set `html` position to look the same as before
-    setTimeout(() => {
+    setTimeout(function() {
       $('html').css({
-        width: '100%',
+        width: '100vw',
         position: 'fixed',
         top: -scrollY,
         overflow: 'hidden',
@@ -328,7 +328,7 @@ function overflowHidden(isHidden, delay, delay2) {
     }, delay);
 
   } else {
-    setTimeout(() => {
+    setTimeout(function() {
       // get style top for reset position scroll
       var top = html.style.top.replace('px', '') / 1;
 
