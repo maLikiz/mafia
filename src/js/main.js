@@ -39,13 +39,13 @@ $('#amount').on('keyup change input click', function() {
   }
 
   if (getCookie('lng') == null) {
-    deppperr = '<b>Минимальная сумма ' + valll + mindep + '!</b>';
-    deppperr2 = 'Выберите платежную систему:';
-    deppperr3 = '<b>Неверный формат, пример: 79876543210!</b>';
-    deppperr4 = '<b>Неверный формат, пример: 9876543210!</b>';
-    deppperr5 = '<b>Система временно недоступна!</b>';
-    deppperr6 = '<b>Некорректная сумма!</b>';
-    deppperr7 = '<b class="white">Вам отправлено SMS для депозита</b>';
+    deppperr = '<b>РњРёРЅРёРјР°Р»СЊРЅР°СЏ СЃСѓРјРјР° ' + valll + mindep + '!</b>';
+    deppperr2 = 'Р’С‹Р±РµСЂРёС‚Рµ РїР»Р°С‚РµР¶РЅСѓСЋ СЃРёСЃС‚РµРјСѓ:';
+    deppperr3 = '<b>РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚, РїСЂРёРјРµСЂ: 79876543210!</b>';
+    deppperr4 = '<b>РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚, РїСЂРёРјРµСЂ: 9876543210!</b>';
+    deppperr5 = '<b>РЎРёСЃС‚РµРјР° РІСЂРµРјРµРЅРЅРѕ РЅРµРґРѕСЃС‚СѓРїРЅР°!</b>';
+    deppperr6 = '<b>РќРµРєРѕСЂСЂРµРєС‚РЅР°СЏ СЃСѓРјРјР°!</b>';
+    deppperr7 = '<b class="white">Р’Р°Рј РѕС‚РїСЂР°РІР»РµРЅРѕ SMS РґР»СЏ РґРµРїРѕР·РёС‚Р°</b>';
   }
 
   if (this.value.match(/[^0-9.]/g)) {
@@ -133,13 +133,10 @@ $('#reg_currr').on('keyup change input click', function() {
 
 });
 
-$('#reg_phn').on('keyup change input click', function() {
-  regppp = $('#reg_phn').val();
-
-  if (regppp == '') {
-    $('#reg_phn').val('+');
-  }
-});
+$('#reg_phn').on('keyup change input click', function(){
+regppp=$('#reg_phn').val(); if(regppp==''){ $('#reg_phn').val('+'); } });
+$('#rec_phn').on('keyup change input click', function(){
+regpph=$('#rec_phn').val(); if(regpph==''){ $('#rec_phn').val('+'); } });
 
 $('#reg_currr').on('keyup change input click', function() {
   selectedcur = $('#reg_cur').val();
@@ -165,6 +162,11 @@ $('.marker2.onPhone').on('keyup click', function() {
 $('.marker2.onEmail').on('keyup click', function() {
   $('#reg_phn').val('');
 });
+$('#rec_ema').on('keyup click', function() {
+  $('#rec_phn').val('');
+});
+
+
 
 $('#gift1').on('keyup click', function() {
   $('#reg_gif').val('1');
@@ -184,7 +186,7 @@ $(function() {
     function() {
       if (this.value.length >= 2) {
         $.ajax({
-          type: 'post', url: '/core/search/',
+          type: 'post', url: '/core/post/search/',
           data: {'searchquery': this.value},
           cache: false,
           success: function(html) {
@@ -200,7 +202,7 @@ $(function() {
     function() {
       if (this.value.length == 2) {
         $.ajax({
-          type: 'post', url: '/core/brand/',
+          type: 'post', url: '/core/post/brand/',
           data: {'brandquery': this.value},
           cache: false,
           success: function(html) {
@@ -290,8 +292,7 @@ $(function() {
 
     document.querySelector('html').style.touchAction = '';
   });
-
-  $(window).resize(function() {
+$(window).resize(function() {
     if ($(window).width() >= 880) {
       hideSdebar();
     }
@@ -320,7 +321,7 @@ function overflowHidden(isHidden, delay, delay2) {
     // set `html` position to look the same as before
     setTimeout(function() {
       $('html').css({
-        width: '100vw',
+       width: '100vw',
         position: 'fixed',
         top: -scrollY,
         overflow: 'hidden',
@@ -346,14 +347,14 @@ function hideSdebar() {
   $('body').removeClass('active-mobile');
   $('.mobile-sidebar').removeClass('active');
   $('.open-menu').removeClass('active');
-  overflowHidden(false, 300, 0);
+overflowHidden(false, 300, 0);
 }
 
 function showSdebar() {
   $('body').addClass('active-mobile');
   $('.mobile-sidebar').addClass('active');
   $('.open-menu').addClass('active');
-  overflowHidden(true, 300, 300);
+overflowHidden(true, 300, 300);
 
 
   $('.mobile-sidebar').css({
@@ -452,6 +453,64 @@ function showSdebar() {
       'padding-right': SW,
     });
   });
+
+  $('.open-aff').click(function(eventObject) {
+    $('.popup').addClass('active');
+    $('.popup .account').addClass('active');
+$('[data-tab]').removeClass('active');
+$('#tab1,#tab2,#tab3,#tab4,#tab5,#tab6').removeClass('active');
+$('#tab4').addClass('active');
+$('[data-tab="tab4"]').addClass('active');
+
+    $('body').addClass('popup-active');
+    eventObject.preventDefault();
+
+    $('body').css({
+      'padding-right': SW,
+    });
+
+
+
+  });
+
+  $('.open-profile').click(function(eventObject) {
+    $('.popup').addClass('active');
+    $('.popup .account').addClass('active');
+$('[data-tab]').removeClass('active');
+$('#tab1,#tab2,#tab3,#tab4,#tab5,#tab6').removeClass('active');
+$('#tab6').addClass('active');
+$('[data-tab="tab6"]').addClass('active');
+
+    $('body').addClass('popup-active');
+    eventObject.preventDefault();
+
+    $('body').css({
+      'padding-right': SW,
+    });
+
+
+
+  });
+
+  $('.open-bonuses').click(function(eventObject) {
+    $('.popup').addClass('active');
+    $('.popup .account').addClass('active');
+$('[data-tab]').removeClass('active');
+$('#tab1,#tab2,#tab3,#tab4,#tab5,#tab6').removeClass('active');
+$('#tab5').addClass('active');
+$('[data-tab="tab5"]').addClass('active');
+
+    $('body').addClass('popup-active');
+    eventObject.preventDefault();
+
+    $('body').css({
+      'padding-right': SW,
+    });
+
+
+
+  });
+
   $('.open-registration').click(function(eventObject) {
     $('.popup-login').removeClass('active');
     $('.popup-recovery').removeClass('active');
