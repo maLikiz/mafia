@@ -13,10 +13,24 @@ $('.payment-radio.phoneqiwi').on('keyup click', function() {
   $('.phoneinput2').show();
 });
 
-$('.amount-radio').on('keyup click', function() {
-  selectamount = $('input[name=selectamount]:checked').val();
-  $('#amount').val(selectamount);
-});
+/* Deposit slider on cashbox popup */
+(function($) {
+  var values = [
+    $('#amount1').val(),
+    $('#amount2').val(),
+    $('#amount3').val(),
+    $('#amount4').val(),
+    $('#amount5').val(),
+  ];
+
+  $('.amount-slider').slider({
+    min: 0,
+    max: 4,
+    slide: function(event, ui) {
+      $('#amount').val(values[ui.value]);
+    },
+  });
+})(jQuery);
 
 $('#phonemobile, #phoneqiwi').on('keyup change input click', function() {
   if (this.value.match(/[^0-9.]/g)) {

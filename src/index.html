@@ -9,6 +9,7 @@
 <link href="/css/style.css" rel="stylesheet">
 <link rel="icon" href="/img/fav.png" type="image/x-icon">
 <script src="/js/jquery.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
 <script src="/js/core.js"></script>
 <script src="/js/count.js"></script>
 <script src="//ulogin.ru/js/ulogin.js"></script>
@@ -306,16 +307,35 @@ jackpot
 </div><div class="payments-info"><div class="payments-info-holder"><div class="col-left">
 
 <div class="amountselect">
-<span class="label">Выберите сумму депозита, €:</span><div class="amount-holder">
-<div class="amount-radio"><input checked id="amount1" type="radio" name="selectamount" value="10"><label for="amount1">10</label></div>
-<div class="amount-radio"><input id="amount2" type="radio" name="selectamount" value="20"><label for="amount2">20</label></div>
-<div class="amount-radio"><input id="amount3" type="radio" name="selectamount" value="50"><label for="amount3">50</label></div>
-<div class="amount-radio"><input id="amount4" type="radio" name="selectamount" value="100"><label for="amount4">100</label></div>
-<div class="amount-radio"><input id="amount5" type="radio" name="selectamount" value="200"><label for="amount5">200</label></div></div></div>
-<div class="phoneinput1"><span class="label">Укажите номер телефона:</span>
-<input type="text" id="phonemobile" placeholder="Формат: 9998887766" maxlength="10"></div>
-<div class="phoneinput2"><span class="label">Укажите номер телефона:</span>
-<input type="text" id="phoneqiwi" placeholder="Формат: 79998887766" maxlength="12"></div>
+  <span class="label">Выберите сумму депозита, €:</span>
+
+  <div class="amount-holder-wrapper">
+    <div class="amount-slider">
+    </div>
+    <div class="amount-holder">
+      <div class="amount-radio">
+        <input checked id="amount1" type="radio" name="selectamount" value="10">
+        <label for="amount1">10</label>
+      </div>
+      <div class="amount-radio">
+        <input id="amount2" type="radio" name="selectamount" value="20">
+        <label for="amount2">20</label>
+      </div>
+      <div class="amount-radio">
+        <input id="amount3" type="radio" name="selectamount" value="50">
+        <label for="amount3">50</label>
+      </div>
+      <div class="amount-radio">
+        <input id="amount4" type="radio" name="selectamount" value="100">
+        <label for="amount4">100</label>
+      </div>
+      <div class="amount-radio">
+        <input id="amount5" type="radio" name="selectamount" value="200">
+        <label for="amount5">200</label>
+      </div>
+    </div>
+  </div>
+</div>
 
 </div><div class="col-separator"><span>или</span></div><div class="col-right"><span class="label">Введите сумму депозита, €:</span>
 <input type="text" id="amount" placeholder="Минимум - €1"></div></div>
