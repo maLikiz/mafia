@@ -13,24 +13,8 @@ $('.payment-radio.phoneqiwi').on('keyup click', function() {
   $('.phoneinput2').show();
 });
 
-/* Deposit slider on cashbox popup */
-(function($) {
-  var values = [
-    $('#amount1').val(),
-    $('#amount2').val(),
-    $('#amount3').val(),
-    $('#amount4').val(),
-    $('#amount5').val(),
-  ];
 
-  $('.amount-slider').slider({
-    min: 0,
-    max: 4,
-    slide: function(event, ui) {
-      $('#amount').val(values[ui.value]);
-    },
-  });
-})(jQuery);
+
 
 $('#phonemobile, #phoneqiwi').on('keyup change input click', function() {
   if (this.value.match(/[^0-9.]/g)) {
@@ -53,13 +37,13 @@ $('#amount').on('keyup change input click', function() {
   }
 
   if (getCookie('lng') == null) {
-    deppperr = '<b>РњРёРЅРёРјР°Р»СЊРЅР°СЏ СЃСѓРјРјР° ' + valll + mindep + '!</b>';
-    deppperr2 = 'Р’С‹Р±РµСЂРёС‚Рµ РїР»Р°С‚РµР¶РЅСѓСЋ СЃРёСЃС‚РµРјСѓ:';
-    deppperr3 = '<b>РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚, РїСЂРёРјРµСЂ: 79876543210!</b>';
-    deppperr4 = '<b>РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚, РїСЂРёРјРµСЂ: 9876543210!</b>';
-    deppperr5 = '<b>РЎРёСЃС‚РµРјР° РІСЂРµРјРµРЅРЅРѕ РЅРµРґРѕСЃС‚СѓРїРЅР°!</b>';
-    deppperr6 = '<b>РќРµРєРѕСЂСЂРµРєС‚РЅР°СЏ СЃСѓРјРјР°!</b>';
-    deppperr7 = '<b class="white">Р’Р°Рј РѕС‚РїСЂР°РІР»РµРЅРѕ SMS РґР»СЏ РґРµРїРѕР·РёС‚Р°</b>';
+    deppperr = '<b>Минимальная сумма ' + valll + mindep + '!</b>';
+    deppperr2 = 'Выберите платежную систему:';
+    deppperr3 = '<b>Неверный формат, пример: 79876543210!</b>';
+    deppperr4 = '<b>Неверный формат, пример: 9876543210!</b>';
+    deppperr5 = '<b>Система временно недоступна!</b>';
+    deppperr6 = '<b>Некорректная сумма!</b>';
+    deppperr7 = '<b class="white">Вам отправлено SMS для депозита</b>';
   }
 
   if (this.value.match(/[^0-9.]/g)) {
@@ -156,15 +140,15 @@ $('#reg_currr').on('keyup change input click', function() {
   selectedcur = $('#reg_cur').val();
 
   if (selectedcur == 'RUB') {
-    $('#giftnodep').attr('src', '/img/gift1_rub.png');
+    $('#giftnodeposit').text('Бездепозитный бонус ₽650');
   }
 
   if (selectedcur == 'USD') {
-    $('#giftnodep').attr('src', '/img/gift1_usd.png');
+    $('#giftnodeposit').text('Бездепозитный бонус $10');
   }
 
   if (selectedcur == 'EUR') {
-    $('#giftnodep').attr('src', '/img/gift1_eur.png');
+    $('#giftnodeposit').text('Бездепозитный бонус €10');
   }
 
 });
