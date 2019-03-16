@@ -14,8 +14,6 @@ $('.payment-radio.phoneqiwi').on('keyup click', function() {
 });
 
 
-
-
 $('#phonemobile, #phoneqiwi').on('keyup change input click', function() {
   if (this.value.match(/[^0-9.]/g)) {
     this.value = this.value.replace(/[^0-9.]/g, '');
@@ -52,12 +50,12 @@ $('#amount').on('keyup change input click', function() {
   amount = Number($('#amount').val());
 
   if (mindep > amount) {
-    $('#depbutton').attr('disabled', true).css({'opacity': '0.7'});
+    $('#depbutton').attr('disabled', true).css({ 'opacity': '0.7' });
     $('.deptext').html(deppperr);
     return false;
   } else {
     $('.deptext').html(deppperr2);
-    $('#depbutton').attr('disabled', false).css({'opacity': '1'});
+    $('#depbutton').attr('disabled', false).css({ 'opacity': '1' });
   }
 });
 
@@ -131,10 +129,18 @@ $('#reg_currr').on('keyup change input click', function() {
 
 });
 
-$('#reg_phn').on('keyup change input click', function(){
-regppp=$('#reg_phn').val(); if(regppp==''){ $('#reg_phn').val('+'); } });
-$('#rec_phn').on('keyup change input click', function(){
-regpph=$('#rec_phn').val(); if(regpph==''){ $('#rec_phn').val('+'); } });
+$('#reg_phn').on('keyup change input click', function() {
+  regppp = $('#reg_phn').val();
+  if (regppp == '') {
+    $('#reg_phn').val('+');
+  }
+});
+$('#rec_phn').on('keyup change input click', function() {
+  regpph = $('#rec_phn').val();
+  if (regpph == '') {
+    $('#rec_phn').val('+');
+  }
+});
 
 $('#reg_currr').on('keyup change input click', function() {
   selectedcur = $('#reg_cur').val();
@@ -165,7 +171,6 @@ $('#rec_ema').on('keyup click', function() {
 });
 
 
-
 $('#gift1').on('keyup click', function() {
   $('#reg_gif').val('1');
 });
@@ -185,7 +190,7 @@ $(function() {
       if (this.value.length >= 2) {
         $.ajax({
           type: 'post', url: '/core/post/search/',
-          data: {'searchquery': this.value},
+          data: { 'searchquery': this.value },
           cache: false,
           success: function(html) {
             $('.games').html(html);
@@ -201,7 +206,7 @@ $(function() {
       if (this.value.length == 2) {
         $.ajax({
           type: 'post', url: '/core/post/brand/',
-          data: {'brandquery': this.value},
+          data: { 'brandquery': this.value },
           cache: false,
           success: function(html) {
             $('.games').html(html);
@@ -226,7 +231,7 @@ $(function() {
     startX = event.originalEvent.touches[0].clientX;
     setX = 0;
 
-    $('body > .wrapper').css({transition: '0s'});
+    $('body > .wrapper').css({ transition: '0s' });
 
     if ($('.mobile-sidebar').hasClass('active')) {
       startScrollTop = $('.mobile-sidebar').scrollTop();
@@ -269,7 +274,7 @@ $(function() {
         setSkewX = Math.max(Math.min(sidebarWidth + amplitude, -(startX - x)), amplitude) - amplitude;
       }
 
-      $('body > .wrapper').css({transform: 'translate(' + setSkewX + 'px, 0)'});
+      $('body > .wrapper').css({ transform: 'translate(' + setSkewX + 'px, 0)' });
     }
   });
 
@@ -290,7 +295,7 @@ $(function() {
 
     document.querySelector('html').style.touchAction = '';
   });
-$(window).resize(function() {
+  $(window).resize(function() {
     if ($(window).width() >= 880) {
       hideSdebar();
     }
@@ -301,7 +306,7 @@ $(window).resize(function() {
 function overflowHidden(isHidden, delay, delay2) {
   var div = document.createElement('div');
   var html = document.documentElement;
-  var {scrollY} = window;
+  var { scrollY } = window;
 
   // get scrollbar width
   div.style.overflowY = 'scroll';
@@ -319,7 +324,7 @@ function overflowHidden(isHidden, delay, delay2) {
     // set `html` position to look the same as before
     setTimeout(function() {
       $('html').css({
-       width: '100vw',
+        width: '100vw',
         position: 'fixed',
         top: -scrollY,
         overflow: 'hidden',
@@ -345,14 +350,14 @@ function hideSdebar() {
   $('body').removeClass('active-mobile');
   $('.mobile-sidebar').removeClass('active');
   $('.open-menu').removeClass('active');
-overflowHidden(false, 300, 0);
+  overflowHidden(false, 300, 0);
 }
 
 function showSdebar() {
   $('body').addClass('active-mobile');
   $('.mobile-sidebar').addClass('active');
   $('.open-menu').addClass('active');
-overflowHidden(true, 300, 300);
+  overflowHidden(true, 300, 300);
 
 
   $('.mobile-sidebar').css({
@@ -363,34 +368,34 @@ overflowHidden(true, 300, 300);
 
 (function($) {
 
-  $('.open-menu').click(function(eventObject) {
+  $('.open-menu').click(function(event) {
     if ($(this).hasClass('active')) {
       hideSdebar();
     } else {
       showSdebar();
     }
-    eventObject.preventDefault();
+    event.preventDefault();
   });
 
-  $('.popup-bonus').click(function(eventObject) {
+  $('.popup-bonus').click(function(event) {
     $('.popup-bonus').removeClass('active');
     $(this).toggleClass('active');
-    eventObject.preventDefault();
+    event.preventDefault();
   });
 
-  $('.open-menu2').click(function(eventObject) {
+  $('.open-menu2').click(function(event) {
     $('.header-games-nav').toggleClass('active');
-    eventObject.preventDefault();
+    event.preventDefault();
   });
 
-  $('.marker').click(function(eventObject) {
+  $('.marker').click(function(event) {
     $('.marker').removeClass('active');
     $(this).addClass('active');
     var id = '#' + $(this).attr('data-tab');
     $('.info-block').removeClass('active');
     $(id).addClass('active');
 
-    eventObject.preventDefault();
+    event.preventDefault();
   });
 
   var div = document.createElement('div');
@@ -403,143 +408,114 @@ overflowHidden(true, 300, 300);
   SW = div.offsetWidth - div.clientWidth;
   document.body.removeChild(div);
 
+  var $body = $('body');
 
-  $('.marker2').click(function(eventObject) {
+  function openPopup() {
+    var options = {
+      paddingRight: SW,
+    };
+
+    $('.popup').addClass('active');
+    $body.addClass('popup-active');
+    $body.css(options);
+    $('.fast-links').css(options);
+  }
+
+  function closePopup() {
+    var options = {
+      paddingRight: 0,
+    };
+
+    $('.popup').removeClass('active');
+    $body.removeClass('popup-active');
+    $body.css(options);
+    $('.fast-links').css(options);
+  }
+
+
+  $('.marker2').click(function() {
+    var $this = $(this);
+    var id = '#' + $this.attr('data-tab');
+    console.log(id)
+
     $('.marker2').removeClass('active');
-    $(this).addClass('active');
-    var id = '#' + $(this).attr('data-tab');
+    $this.addClass('active');
     $('.info-block2').removeClass('active');
     $(id).addClass('active');
-
-    eventObject.preventDefault();
   });
 
-  $('.open-login').click(function(eventObject) {
+  $('.open-login').click(function() {
+    openPopup();
+
     $('.popup .registration').removeClass('active');
     $('.popup-recovery').removeClass('active');
-    $('.popup').addClass('active');
     $('.popup-login').addClass('active');
-    $('body').addClass('popup-active');
-    eventObject.preventDefault();
-
-    $('body').css({
-      'padding-right': SW,
-    });
   });
 
-  $('.recovery').click(function(eventObject) {
+  $('.recovery').click(function() {
+    openPopup();
+
     $('.popup-login').removeClass('active');
     $('.popup .registration').removeClass('active');
-    $('.popup').addClass('active');
     $('.popup-recovery').addClass('active');
-
-    $('body').addClass('popup-active');
-    eventObject.preventDefault();
-
-    $('body').css({
-      'padding-right': SW,
-    });
   });
 
-  $('.open-account').click(function(eventObject) {
-    $('.popup').addClass('active');
+  $('.open-account').click(function() {
+    openPopup();
+
     $('.popup .account').addClass('active');
-    $('body').addClass('popup-active');
-    eventObject.preventDefault();
-
-    $('body').css({
-      'padding-right': SW,
-    });
   });
 
-  $('.open-aff').click(function(eventObject) {
-    $('.popup').addClass('active');
+  $('.open-aff').click(function() {
+    openPopup();
+
     $('.popup .account').addClass('active');
-$('[data-tab]').removeClass('active');
-$('#tab1,#tab2,#tab3,#tab4,#tab5,#tab6').removeClass('active');
-$('#tab4').addClass('active');
-$('[data-tab="tab4"]').addClass('active');
-
-    $('body').addClass('popup-active');
-    eventObject.preventDefault();
-
-    $('body').css({
-      'padding-right': SW,
-    });
-
-
-
+    $('[data-tab]').removeClass('active');
+    $('#tab1,#tab2,#tab3,#tab4,#tab5,#tab6').removeClass('active');
+    $('#tab4').addClass('active');
+    $('[data-tab="tab4"]').addClass('active');
   });
 
-  $('.open-profile').click(function(eventObject) {
-    $('.popup').addClass('active');
+  $('.open-profile').click(function() {
+    openPopup();
+
     $('.popup .account').addClass('active');
-$('[data-tab]').removeClass('active');
-$('#tab1,#tab2,#tab3,#tab4,#tab5,#tab6').removeClass('active');
-$('#tab6').addClass('active');
-$('[data-tab="tab6"]').addClass('active');
-
-    $('body').addClass('popup-active');
-    eventObject.preventDefault();
-
-    $('body').css({
-      'padding-right': SW,
-    });
-
-
-
+    $('[data-tab]').removeClass('active');
+    $('#tab1,#tab2,#tab3,#tab4,#tab5,#tab6').removeClass('active');
+    $('#tab6').addClass('active');
+    $('[data-tab="tab6"]').addClass('active');
   });
 
-  $('.open-bonuses').click(function(eventObject) {
-    $('.popup').addClass('active');
+  $('.open-bonuses').click(function() {
+    openPopup();
+
     $('.popup .account').addClass('active');
-$('[data-tab]').removeClass('active');
-$('#tab1,#tab2,#tab3,#tab4,#tab5,#tab6').removeClass('active');
-$('#tab5').addClass('active');
-$('[data-tab="tab5"]').addClass('active');
-
-    $('body').addClass('popup-active');
-    eventObject.preventDefault();
-
-    $('body').css({
-      'padding-right': SW,
-    });
-
-
-
+    $('[data-tab]').removeClass('active');
+    $('#tab1,#tab2,#tab3,#tab4,#tab5,#tab6').removeClass('active');
+    $('#tab5').addClass('active');
+    $('[data-tab="tab5"]').addClass('active');
   });
 
-  $('.open-registration').click(function(eventObject) {
+  $('.open-registration').click(function() {
+    openPopup();
+
     $('.popup-login').removeClass('active');
     $('.popup-recovery').removeClass('active');
-    $('.popup').addClass('active');
     $('.popup .registration').addClass('active');
-    $('body').addClass('popup-active');
-    eventObject.preventDefault();
-
-    $('body').css({
-      'padding-right': SW,
-    });
   });
 
-  $('.popup .btn-close').click(function(eventObject) {
-    $('.popup').removeClass('active');
+  $('.popup .btn-close').click(function() {
+    closePopup();
+
     $('.popup > div').removeClass('active');
-    $('body').removeClass('popup-active');
-    eventObject.preventDefault();
-
-    $('body').css({
-      'padding-right': 0,
-    });
   });
 
-  $('.toggle-dop-nav').click(function(eventObject) {
+  $('.toggle-dop-nav').click(function() {
     $('.dop-nav-list').toggleClass('active');
-    eventObject.preventDefault();
   });
-  $('.toggle-main-nav').click(function(eventObject) {
+
+  $('.toggle-main-nav').click(function() {
     $('.main-nav-list').toggleClass('active');
-    eventObject.preventDefault();
   });
 
 
@@ -561,34 +537,10 @@ $('[data-tab="tab5"]').addClass('active');
 
     $tab.removeClass('active');
     $tab.eq(index).addClass('active');
-
   });
 
-  var body = document.getElementById('body');
   $('.btn-resize').on('click', function() {
     var $display = $('.game-display');
     $display.toggleClass('fullScreen');
-
-    var elem = document.querySelector('iframe');
-
-    // if ($display.hasClass('fullScreen')) {
-    //     if (elem.requestFullscreen) {
-    //         elem.requestFullscreen();
-    //     } else if (elem.mozRequestFullScreen) {
-    //         elem.mozRequestFullScreen();
-    //     } else if (elem.webkitRequestFullscreen) {
-    //         elem.webkitRequestFullscreen();
-    //     } else if (elem.msRequestFullscreen) {
-    //         elem.msRequestFullscreen();
-    //     }
-    // } else {
-    //   if(document.requestFullscreen) {
-    //     document.requestFullscreen();
-    //   } else if(document.webkitRequestFullscreen ) {
-    //     document.webkitRequestFullscreen();
-    //   } else if(document.mozRequestFullscreen) {
-    //     document.mozRequestFullScreen();
-    //   }
-    // }
   });
 })(jQuery);
